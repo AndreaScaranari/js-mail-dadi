@@ -1,0 +1,10 @@
+.results {
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+.contenders-results > p {
+    padding: 1rem;
+    background-color: #0D6EFD;
+    color: white;
+}
