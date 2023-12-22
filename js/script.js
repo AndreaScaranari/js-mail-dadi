@@ -41,11 +41,15 @@ if (userResult > pcResult) {
     dicesResultPar.classList.add("text-bg-warning");
 }
 
+// Inserire il testo dell'esito nel paragrafo
 dicesResultPar.innerText = dicesResult;
+
+// Rimuovere d-none al paragrafo e al bottone
 dicesResultPar.classList.remove("d-none");
 hideButton.classList.remove("d-none");
 });
 
+// Event listenere per rest a hideButton
 hideButton.addEventListener("click", function() {
     userResultPar.classList.add("d-none");
     dicesResultPar.classList.add("d-none");
@@ -56,7 +60,55 @@ hideButton.addEventListener("click", function() {
 // -------------------------------------------------
 
 // ESERCIZIO 2
-// 1. Inventa una lista di email autorizzate
-// 1. Chiedi all’utente la sua email, con un piccolo form.
-// 1. controlla che la mail inserita sia nella lista di chi può accedere,
 // 1. stampa un messaggio appropriato sull’esito del controllo.
+
+// recuperare elementi
+const inputEmail = document.querySelector("input");
+const verifyButton = document.getElementById("verify-button");
+const verifyFeedback = document.getElementById("esito-verifica");
+const hideEmailButton = document.querySelector(".hide-email-button");
+
+// Inventa una lista di email autorizzate
+const emailList = [
+    "a.a@gmail.com",
+    "b.b@gmail.com",
+    "c.c@gmail.com",
+    "d.d@gmail.com"
+]
+
+console.table(emailList);
+
+// stabilire condizioni di autorizzazione
+const accessAuthorized = "Bentornato su Boolean Mails!";
+const accessDenied = "La tua mail non risulta autorizzata all'accesso";
+
+// Aggiungere evento al pulsante verifica
+verifyButton.addEventListener("click", function() {
+    let areYouVerified;
+
+    console.log(inputEmail.value);
+
+    areYouVerified = accessDenied;
+    verifyFeedback.classList.add("text-bg-danger");
+
+    for (let i = 0; i < emailList.length; i++) {
+        if (inputEmail.value == emailList[i]) {
+            areYouVerified = accessAuthorized;
+            verifyFeedback.classList.add("text-bg-success");
+            verifyFeedback.classList.remove("text-bg-danger");
+    }};
+
+    // svuota campi
+    inputEmail.value = "";
+
+    // Inserire il testo dell'esito nel paragrafo
+    verifyFeedback.innerText = areYouVerified;
+    verifyFeedback.classList.remove("d-none");
+    hideEmailButton.classList.remove("d-none");
+});
+
+    // Event listenere per rest a hideButton
+    hideEmailButton.addEventListener("click", function() {
+    verifyFeedback.classList.add("d-none");
+    hideEmailButton.classList.add("d-none");
+    });
