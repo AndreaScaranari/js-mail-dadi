@@ -84,11 +84,9 @@ const accessDenied = "La tua mail non risulta autorizzata all'accesso";
 
 // Aggiungere evento al pulsante verifica
 verifyButton.addEventListener("click", function() {
-    let areYouVerified;
-
     console.log(inputEmail.value);
 
-    areYouVerified = accessDenied;
+    let areYouVerified = accessDenied;
     verifyFeedback.classList.add("text-bg-danger");
 
     for (let i = 0; i < emailList.length; i++) {
